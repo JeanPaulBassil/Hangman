@@ -25,13 +25,15 @@ def char_trader(letter, word_list, hint_list):
 
 
 def guesser(num_of_attempts, letters_set, hint_list, word_list, initial_word):
-    print(f"""{''.join(hint_list)}
-input a letter :""", end='')
+    print(f"""{''.join(hint_list)}                                                      attempts left: {num_of_attempts}
+input a letter (or type \"exit\" to go back to menu):""", end='')
     letter = input()
-    if letter.isupper():
+    if letter == 'exit':
+        menu()
+    elif letter.isupper():
         print("Please enter a lowercase English letter")
         guesser(num_of_attempts, letters_set, hint_list, word_list, initial_word)
-    elif len(letter) > 1:
+    elif len(letter) != 1:
         print("You should input a single letter")
         guesser(num_of_attempts, letters_set, hint_list, word_list, initial_word)
     else:
@@ -75,6 +77,7 @@ def menu():
         menu()
     else:
         print("you should write either \"play\" ,\"exit\" or \"add\"")
+        menu()
 
 
 menu()
